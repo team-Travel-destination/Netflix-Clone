@@ -7,7 +7,7 @@ export default function ModalMovie({ show, handleClose, data }) {
             <Modal.Header closeButton>
                 <Modal.Title>{data.title}</Modal.Title>
             </Modal.Header>
-            <img src={data.image} />
+            <img src={`https://image.tmdb.org/t/p/w500${data.poster_path}`} />
             <Modal.Body>{data.overview}</Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
