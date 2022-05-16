@@ -13,9 +13,9 @@ export default function Movie({ data }) {
         setShow(true)
     };
     return (
-        <div className='container m-3'>
-            <Card style={{ width: '18rem' }} >
-                <Card.Img variant="top" src={data.poster_path} />
+        <div className=' m-3 flex-row '>
+            <Card style={{ width: '18rem' }} className='bg-dark text-white'>
+                <Card.Img variant="top" src={`https://image.tmdb.org/t/p/w500${data.poster_path}`} />
                 <Card.Body>
                     <Card.Title>{data.title}</Card.Title>
                     <Card.Text>{data.overview}</Card.Text>
