@@ -2,7 +2,7 @@ import { Card, Button } from "react-bootstrap";
 import { useState } from "react";
 import ModalMovie from "../ModalMovie/ModalMovie";
 
-export default function Movie({ data }) {
+export default function Movie({ data, updateData }) {
     const [show, setShow] = useState(false);
     const [movie, setMovie] = useState({})
 
@@ -21,6 +21,7 @@ export default function Movie({ data }) {
                     <Card.Text>{data.overview}</Card.Text>
                     <Button variant="primary" onClick={() => { handleShow(data) }}>Show</Button>
                 </Card.Body>
+
             </Card>
             {
                 movie && <ModalMovie show={show} handleClose={handleClose} data={movie} />

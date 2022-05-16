@@ -13,6 +13,17 @@ export default function Home() {
         setRecipe(data);
 
     }
+
+    function updateData(newKey, id) {
+        let updateData = recipe.map((recipe) => {
+            if (recipe.id === id) {
+                recipe.comment = newKey.comment;
+                return recipe
+            }
+        })
+        getTrending(updateData);
+    }
+
     useEffect(() => {
         getTrending();
     }, [])
@@ -20,7 +31,7 @@ export default function Home() {
     return (
         <div className="container mt-5">
 
-            {(recipe.length > 0) && < MovieList recipe={recipe} />}
+            {(recipe.length > 0) && < MovieList recipe={recipe} updateData={updateData} />}
 
 
         </div>

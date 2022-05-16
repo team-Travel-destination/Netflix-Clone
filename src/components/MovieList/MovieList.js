@@ -2,11 +2,11 @@
 import Movie from '../Movie/Movie'
 import './MovieList.css'
 
-export default function MovieList(props) {
+export default function MovieList({ recipe }) {
     return (
         <div className='list'>
             {
-                props.recipe.map((data) => {
+                recipe.map((data) => {
                     return (
                         <>
                             <Movie data={data} />
