@@ -1,5 +1,6 @@
-import { Modal, Button, Form } from 'react-bootstrap'
-import { useRef } from 'react'
+import { Modal, Button, Form } from 'react-bootstrap';
+import { useRef } from 'react';
+
 
 import axios from 'axios'
 export default function ModalMovie({ show, handleClose, data }) {
@@ -24,19 +25,17 @@ export default function ModalMovie({ show, handleClose, data }) {
             overview: data.overview
         }
         console.log({ favData });
-        // let response = await fetch(url, {
-        //     method: 'POST',
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     },
-        //     body: JSON.stringify(favData)
-        // })
-        axios.post(url, favData).then((res) => {
-            console.log("success");
-        }).catch(console.log("Error in fetch data"))
 
-        // let addMovie = await response.json();
-        // console.log(addMovie);
+
+
+        axios.post(url, favData).then((res) => {
+            console.log(res.data);
+        })
+            .catch((error) => {
+                console.log("Error in fetch data", error)
+            })
+
+
 
     }
 
