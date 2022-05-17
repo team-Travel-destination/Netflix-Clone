@@ -14,7 +14,7 @@ export default function Home() {
         // setRecipe(data);
         axios.get(`${url}/trending`).then((data) => {
             setRecipe(data.data);
-            console.log(data.data);
+            // console.log(data.data)
         }).catch((error) => {
             console.log("Error in trending", error)
         })

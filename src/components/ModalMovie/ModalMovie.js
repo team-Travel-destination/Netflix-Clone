@@ -22,7 +22,7 @@ export default function ModalMovie({ show, handleClose, data }) {
             title: data.title,
             release_date: data.release_date,
             poster_path: data.poster_path,
-            overview: data.overview
+            summary: data.overview
         }
         console.log({ favData });
 
