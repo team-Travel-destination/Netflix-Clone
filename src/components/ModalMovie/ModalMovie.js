@@ -1,6 +1,7 @@
 import { Modal, Button, Form } from 'react-bootstrap'
 import { useRef } from 'react'
 
+import axios from 'axios'
 export default function ModalMovie({ show, handleClose, data }) {
 
     let comment = useRef();
@@ -11,7 +12,7 @@ export default function ModalMovie({ show, handleClose, data }) {
     }
 
 
-    async function handleAdd(event, favdata) {
+    async function handleAdd(event, data) {
         event.preventDefault();
 
         let url = `${process.env.REACT_APP_SERVER}/addMovie`;
@@ -22,16 +23,20 @@ export default function ModalMovie({ show, handleClose, data }) {
             poster_path: data.poster_path,
             overview: data.overview
         }
-        let response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(favData)
-        })
+        console.log({ favData });
+        // let response = await fetch(url, {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(favData)
+        // })
+        axios.post(url, favData).then((res) => {
+            console.log("success");
+        }).catch(console.log("Error in fetch data"))
 
-        let addMovie = await response.json();
-        console.log(addMovie);
+        // let addMovie = await response.json();
+        // console.log(addMovie);
 
     }
 
@@ -57,7 +62,7 @@ export default function ModalMovie({ show, handleClose, data }) {
                 <Button variant="secondary" onClick={handleClose}>
                     Close
                 </Button>
-                <Button variant="primary" onClick={(event, data) => handleAdd(event, data)}>
+                <Button variant="primary" onClick={(event) => handleAdd(event, data)}>
                     Add Fav
                 </Button>
             </Modal.Footer>
